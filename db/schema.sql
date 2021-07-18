@@ -3,13 +3,13 @@ DROP TABLE IF EXISTS roles; -- what does this need to be
 DROP TABLE IF EXISTS managers; -- what are you
 DROP TABLE IF EXISTS voters; -- what are you
 
-CREATE TABLE parties (
+CREATE TABLE departments (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description TEXT
 );
 
-CREATE TABLE candidates (
+CREATE TABLE roles (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
@@ -18,15 +18,15 @@ CREATE TABLE candidates (
   CONSTRAINT fk_party FOREIGN KEY (party_id) REFERENCES parties(id) ON DELETE SET NULL
 );
 
-CREATE TABLE voters (
-  id INTEGER AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(30) NOT NULL,
-  last_name VARCHAR(30) NOT NULL,
-  email VARCHAR(50) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+-- CREATE TABLE voters (
+--   id INTEGER AUTO_INCREMENT PRIMARY KEY,
+--   first_name VARCHAR(30) NOT NULL,
+--   last_name VARCHAR(30) NOT NULL,
+--   email VARCHAR(50) NOT NULL,
+--   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+-- );
 
-CREATE TABLE votes (
+CREATE TABLE votes ( --managers?
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   voter_id INTEGER NOT NULL,
   candidate_id INTEGER NOT NULL,
