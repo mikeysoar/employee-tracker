@@ -1,0 +1,5 @@
+class department {
+    constructor(connect) {
+        
+    }
+}

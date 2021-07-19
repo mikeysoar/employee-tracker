@@ -1,0 +1,28 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "A CMS to help manage a companies database. This application will keep track of the Empoyee, the employee ID, their department, how much they earn, who their direct manager is and what is their role as an employee.",
+  "main": "server.js",
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeysoar/employee-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikeysoar/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/mikeysoar/employee-tracker#readme"
+}
