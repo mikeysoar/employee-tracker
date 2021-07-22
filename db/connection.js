@@ -1,4 +1,5 @@
 const mysql = require("mysql2");
+const util = require('util');
 
 // Connect to database
 const db = mysql.createConnection({
@@ -7,7 +8,10 @@ const db = mysql.createConnection({
     user: 'root',
     // Your MySQL password
     password: 'N78760c172Code!',
-    database: 'election'
+    database: 'company'
 });
-
+db.connect((err) => {
+if(err) throw err;
+})
+db.query = util.promisify(db.query);
 module.exports = db;
