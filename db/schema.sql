@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS employee;
-DROP TABLE IF EXISTS departments; 
-DROP TABLE IF EXISTS roles;
+DROP DATABASE IF EXISTS company;
+CREATE DATABASE company;
+USE company;
+
 
 
 CREATE TABLE department (

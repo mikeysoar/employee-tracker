@@ -1,3 +1,5 @@
+USE company;
+
 INSERT INTO department (name)
 VALUES
   ('Receptionist'),
@@ -5,11 +7,15 @@ VALUES
   ('Technician'),
   ('Tech Support');
 
-  INSERT INTO role (title, salary, department_id)
-  VALUES
+INSERT INTO role (title, salary, department_id)
+VALUES
+  ('Recptionist', 35000, 1),
   ('Sales manager', 80000, 2),
   ('Salesman', 50000, 2),
-  -- next position etc....
+  ('Technician Lead', 55000, 3),
+  ('Technician', 45000, 3),
+  ('Tech Support Lead', 40000, 4),
+  ('Tech Support', 35000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
@@ -20,8 +26,6 @@ VALUES
   ('Katherine', 'Mansfield', 5, 1),
   ('Dora', 'Carrington', 6, 3),
   ('Edward', 'Bellamy', 7, 3),
-  ('Montague', 'Summers', 8, 3),
-  ('Octavia', 'Butler', 9, 3),
-  ('Unica', 'Zurn', 10, 3);
-
-;
+  ('Montague', 'Summers', 3, 3),
+  ('Octavia', 'Butler', 4, 3),
+  ('Unica', 'Zurn', 2, 3);
