@@ -2,6 +2,7 @@ USE company;
 
 INSERT INTO department (name)
 VALUES
+  ('Boss'),
   ('Receptionist'),
   ('Sales'),
   ('Technician'),
@@ -9,13 +10,13 @@ VALUES
 
 INSERT INTO role (title, salary, department_id)
 VALUES
-  ('Recptionist', 35000, 1),
-  ('Sales manager', 80000, 2),
-  ('Salesman', 50000, 2),
-  ('Technician Lead', 55000, 3),
-  ('Technician', 45000, 3),
-  ('Tech Support Lead', 40000, 4),
-  ('Tech Support', 35000, 4);
+  ('Recptionist', 35000, 2),
+  ('Sales manager', 80000, 3),
+  ('Salesman', 50000, 3),
+  ('Technician Lead', 55000, 4),
+  ('Technician', 45000, 4),
+  ('Tech Support Lead', 40000, 5),
+  ('Tech Support', 35000, 5);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
