@@ -13,11 +13,9 @@ const mainMenu = async () => {
             'View Employees by Manager',
             'Add Employee',
             'Add Department',
-            "Add a Role",
             'Add Employee Role',
             'Update Employee Role',
             'View All Departments',
-            'Update Employee Manager',
             'Exit'
         ]
     }]);
@@ -34,7 +32,6 @@ const mainMenu = async () => {
         const employeeByDepartment = await db.query('SELECT * FROM employee LEFT JOIN role ON employee.role_id = role.id')
         console.table(employeeByDepartment);
         mainMenu();
-        // (bonus)
     } else if (mainQuestion.answer === 'View Employees by Manager') {
         const employeeByManager = await db.query('SELECT concat(manager.first_name, " ", manager.last_name) AS manager, employee.first_name AS employee FROM employee LEFT JOIN employee manager ON manager.id = employee.manager_id WHERE employee.manager_id IS NOT NULL; ')
         console.table(employeeByManager);
@@ -77,22 +74,22 @@ const mainMenu = async () => {
 
         console.table(addEmployee);
         mainMenu();
-        // this one is broken
     } else if (mainQuestion.answer === 'Add Department') {
         const addDepartment = await inquirer.prompt([
             {
                 type: 'input',
-                name: 'department',
+                name: 'name',
                 message: 'What department would you like to add?'
             },
         ])
-        const departmentInput = await db.query('INSERT INTO department (name) VALUES (?)',);
+        const departmentInput = await db.query('INSERT INTO department (name) VALUES (?)',
+            [
+                addDepartment.name
+            ]);
         console.table(addDepartment);
         mainMenu();
-
-        // this one is broken
     } else if (mainQuestion.answer === 'Add Employee Role') {
-        const addRoleInput = await inquirer.prompt([
+        const addRole = await inquirer.prompt([
             {
                 type: 'input',
                 name: 'title',
@@ -109,22 +106,36 @@ const mainMenu = async () => {
                 message: 'What is the department ID?'
             },
         ])
-        const addRole = await db.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)',
+        const addRoleInput = await db.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)',
             [
-                addRoleInput.title,
-                addRoleInput.salary,
-                addRoleInput.department_id
+                addRole.title,
+                addRole.salary,
+                addRole.department_id
             ]
         );
-        console.table(addRole);
+        console.table(addRoleInput);
         mainMenu();
         // this one is still broken
     } else if (mainQuestion.answer === 'Update Employee Role') {
-        const updateEmployeeRole = await db.query('UPDATE employee')
-        // need to update employee role
+        const updateEmployeeRole = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'employee',
+                message: 'Which employee would you like to update?'
+            },
+            {
+                type: 'input',
+                name: 'role_id',
+                message: 'What is the employees new role?'
+            }
+            ])
+        const updateEmployeeRoleInput = await db.query('UPDATE employee SET role_id = ? WHERE id = ?',
+                [
+                    updateEmployeeRole.role_id,
+                    updateEmployeeRole.employee
+                ])
         console.log(updateEmployeeRole);
         mainMenu();
-        // this one works
     } else if (mainQuestion.answer === 'View All Departments') {
         const allDepartments = await db.query('SELECT * FROM department')
         console.table(allDepartments);
