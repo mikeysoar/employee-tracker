@@ -7,8 +7,9 @@ A CMS to help manage a companies database. This application will keep track of t
 ## Built with
 
 - Node.js
-- Mysql
+- Mysql2
 - Inquirer
+- Console.table
 
 
 ## Screenshots
