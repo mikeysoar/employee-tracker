@@ -13,7 +13,7 @@ A CMS to help manage a companies database. This application will keep track of t
 
 ## getting started
 
-With the files downloaded a person can access start this program from the root directory. Type npm start and the CLI will populate.
+With the files downloaded a person can access this program from the root directory. Type npm start and the CLI will populate. When finished making selections arrow to the exit option and press enter.
 
 
 ## Screenshots
